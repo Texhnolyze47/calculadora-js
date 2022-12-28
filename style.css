@@ -1,0 +1,29 @@
+html{   
+     background-color: #000;
+}
+
+.container-calculadora{
+    border: 5px solid #fff;
+    width: 500px;
+    height: 700px;
+    border-radius: 25;
+    margin: 0 auto;
+}
+
+.container-titulo{
+ display: flex;
+ justify-content: center;
+}
+
+.titulo{
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-botones{
+    display: grid;
+}
+
+.columna-botones{
+    display: flex;
+}
