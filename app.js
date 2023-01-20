@@ -1,4 +1,3 @@
-// Modelo
 class ModelCalculator{
   
   constructor(displayValue,firstValue,waitingForSecondOperando,operator){
@@ -9,9 +8,22 @@ class ModelCalculator{
   };
 
 
+  inputDigit(digit){
+    let displayValue = this.displayValue === '0' ? digit : this.displayValue + digit;
+
+    this.displayValue = displayValue 
+  }
+
+
   updateDisplay() {
     const display = document.querySelector('#display');
     display.value = this.displayValue;
+  }
+
+  inputDecimal(dot){
+    if(!this.displayValue.includes(dot)){
+      this.displayValue += dot;
+    }
   }
 
 }
@@ -38,18 +50,20 @@ numeros.addEventListener('click', (event) => {
   
   if(key.classList.contains('decimal')){
     console.log('decimal', key.textContent)
-
+    calculator.inputDecimal(key.textContent)
+    calculator.updateDisplay();
     return;
   }
 
  
   if(key.classList.contains('borrar')){
-    console.log('clear', key.textContent)
+    console.log('clear', key.textContent);
 
     return;
   }
 
-  console.log('digit', key.textContent)
+  calculator.inputDigit(key.textContent);
+  calculator.updateDisplay()
 
 });
 
