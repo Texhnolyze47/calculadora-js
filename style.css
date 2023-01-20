@@ -27,3 +27,10 @@ html{
 .columna-botones{
     display: flex;
 }
+
+#display{
+    background-color: #fff;
+    width: 100%;
+    height: 30px;
+    color: #000;
+}
