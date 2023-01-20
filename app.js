@@ -15,7 +15,6 @@ class Calculator{
   }
 
   
-
   calculate(firstOperand,secondOperand, operator){
     if(operator === '+'){
       console.log(" El signo es " + operator)
@@ -81,7 +80,7 @@ class Calculator{
       const result = this.calculate(this.firstValue, inputValue, this.operator)
       console.log("El resultado es: " + result)
 
-      this.displayValue = String(result)
+      this.displayValue = `${parseFloat(result.toFixed(7))}`;
       this.firstValue = result;
     }
 
