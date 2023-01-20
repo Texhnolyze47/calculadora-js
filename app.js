@@ -56,6 +56,12 @@ class Calculator{
   }
 
   inputDecimal(dot){
+    if(this.waitingForSecondOperando === true){
+      this.displayValue = '0.'
+      this.waitingForSecondOperando = false;
+      return
+    }
+
     if(!this.displayValue.includes(dot)){
       this.displayValue += dot;
     }
