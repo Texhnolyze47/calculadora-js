@@ -14,14 +14,8 @@ class Calculator {
   }
 
   calculate(firstOperand, secondOperand, operator) {
+    
     if (operator === "+") {
-      console.log(" El signo es " + operator);
-      console.log(
-        " El resultado de la suma es " +
-          typeof firstOperand +
-          typeof secondOperand
-      );
-
       return firstOperand + secondOperand;
     } else if (operator === "-") {
       return firstOperand - secondOperand;
@@ -117,7 +111,7 @@ numeros.addEventListener("click", (event) => {
     case ".":
       calculator.inputDecimal(buttonValue);
       break;
-    case "borrar":
+    case "AC":
       calculator.reset();
       break;
     default:
