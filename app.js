@@ -15,18 +15,22 @@ class Calculator {
 
   backspace(){
     this.displayValue = this.displayValue.slice(0,-1)
-    this.updateDisplay()
+    if(this.displayValue.length === 0){
+      this.displayValue = "0"
+    }
   }
 
   calculate(firstOperand, secondOperand, operator) {
-    
+    console.log("El operador es " + operator)
     switch (operator) {
       case "+":
         return firstOperand + secondOperand;
       case "-":
         return firstOperand - secondOperand;
+
       case "*":
         return firstOperand * secondOperand;
+
       case "/":
         return firstOperand / secondOperand;
       case "√":
@@ -36,7 +40,7 @@ class Calculator {
       case "%":
         return firstOperand % secondOperand;
       default:
-        console.log("Este caso aun no esta soportado")
+        console.log("Esta operacion no esta soportada");
         break;
     }
     return secondOperand;
@@ -80,14 +84,19 @@ class Calculator {
 
   handleOperator(nextOperator) {
     const inputValue = parseFloat(this.displayValue);
+    let operadorTemp;
 
     if (this.operator && this.waitingForSecondOperando) {
       this.operator = nextOperator;
     }
 
     if (nextOperator === "√") {
-      this.firstValue = "√";
+      console.log("Es una raiz");
+      const result = this.calculate(null,inputValue,nextOperator);
+      this.displayValue = `${parseFloat(result.toFixed(7))}`;
+      this.firstValue = result;
       this.waitingForSecondOperando = false;
+      this.operator = null;
     } else if (this.firstValue === null && !isNaN(inputValue)) {
       this.firstValue = inputValue;
     } else if (this.operator) {
