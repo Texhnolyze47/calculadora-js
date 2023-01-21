@@ -19,8 +19,8 @@ html{
 .calculadora .container-botones button{
     border: 0;
     outline: 0;
-    width: 70px;
-    height: 60px;
+    width: 80px;
+    height: 70px;
     border-radius: 10px;
     box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
     background: transparent;
@@ -50,7 +50,7 @@ html{
 }
 
 .calculadora .container-botones .equal{
-width: 165px;
+width: 185px;
 }
 
 
