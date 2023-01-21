@@ -3,53 +3,53 @@ html{
 }
 
 .container-calculadora{
-    border: 5px solid #fff;
-    width: 30vw;
-    height: 80vh;
-    margin: 0 auto;
-}
-
-.container-titulo{
+    width: 100%;
+    height: 110vh;
+    background-color: #e3f9ff;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.titulo{
+.calculadora{
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.calculadora .container-botones button{
+    border: 0;
+    outline: 0;
+    width: 70px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 1em;
     color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.container-botones{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
-}
-
-.columna-botones > button{
-    margin: 1vh 1px 10px 0;
-    padding: 2vh 2vw 1vh 2vw;
+    cursor: pointer;
+    margin: 10px;
+    
 }
 
 #screen{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 1vw 1vw 1vw;
-}
-#display{
-    background-color: #fff;
-    width: 100%;
-    height: 30px;
-    text-align: right;
-
-    color: #000;
+    justify-content: flex-end;
+    margin: 20px 10px;
 }
 
-#result{
-    background-color: #fff;
-    width: 100%;
-    height: 30px;
+#screen input{
     text-align: right;
-    color: #000;
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 2em;
+    box-shadow: none;
+    color: #fff;
+
+}
+
+.calculadora .container-botones .equal{
+width: 165px;
 }
