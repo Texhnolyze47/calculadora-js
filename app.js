@@ -23,10 +23,9 @@ class Calculator {
       return firstOperand * secondOperand;
     } else if (operator === "/") {
       return firstOperand / secondOperand;
-    } else if( firstOperand === "√"){
+    } else if(operator === "√"){
       return Math.sqrt(secondOperand)
     }
-
     return secondOperand;
   }
 
