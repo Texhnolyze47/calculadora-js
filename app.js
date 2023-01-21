@@ -15,22 +15,25 @@ class Calculator {
 
   calculate(firstOperand, secondOperand, operator) {
     
-    if (operator === "+") {
-      return firstOperand + secondOperand;
-    } else if (operator === "-") {
-      return firstOperand - secondOperand;
-    } else if (operator === "*") {
-      return firstOperand * secondOperand;
-    } else if (operator === "/") {
-      return firstOperand / secondOperand;
-    } else if(operator === "√"){
-      return Math.sqrt(secondOperand)
-    }else if( operator === "^"){
-      return Math.pow(firstOperand,secondOperand);
-    } else if( operator === "%"){
-      return firstOperand % secondOperand;
+    switch (operator) {
+      case "+":
+        return firstOperand + secondOperand;
+      case "-":
+        return firstOperand - secondOperand;
+      case "*":
+        return firstOperand * secondOperand;
+      case "/":
+        return firstOperand / secondOperand;
+      case "√":
+        return Math.sqrt(secondOperand)
+      case "^":
+        return Math.pow(firstOperand,secondOperand);
+      case "%":
+        return firstOperand % secondOperand;
+      default:
+        console.log("Este caso aun no esta soportado")
+        break;
     }
-
     return secondOperand;
   }
 
