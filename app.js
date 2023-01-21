@@ -13,6 +13,11 @@ class Calculator {
     this.operator = null;
   }
 
+  backspace(){
+    this.displayValue = this.displayValue.slice(0,-1)
+    this.updateDisplay()
+  }
+
   calculate(firstOperand, secondOperand, operator) {
     
     switch (operator) {
@@ -129,6 +134,9 @@ numeros.addEventListener("click", (event) => {
       break;
     case "AC":
       calculator.reset();
+      break;
+    case "DEL":
+      calculator.backspace();
       break;
     default:
       if (Number.isInteger(parseFloat(buttonValue))) {
