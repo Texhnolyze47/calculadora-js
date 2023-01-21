@@ -26,7 +26,9 @@ class Calculator {
     } else if(operator === "√"){
       return Math.sqrt(secondOperand)
     }else if( operator === "^"){
-      return Math.pow(firstOperand,secondOperand)
+      return Math.pow(firstOperand,secondOperand);
+    } else if( operator === "%"){
+      return firstOperand % secondOperand;
     }
 
     return secondOperand;
@@ -116,6 +118,7 @@ numeros.addEventListener("click", (event) => {
     case "=":
     case "√":
     case "^":
+    case "%":
       calculator.handleOperator(buttonValue);
       break;
     case ".":
