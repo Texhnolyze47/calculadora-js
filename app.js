@@ -23,6 +23,8 @@ class Calculator {
       return firstOperand * secondOperand;
     } else if (operator === "/") {
       return firstOperand / secondOperand;
+    } else if( firstOperand === "√"){
+      return Math.sqrt(secondOperand)
     }
 
     return secondOperand;
@@ -48,6 +50,7 @@ class Calculator {
   updateDisplay() {
     const display = document.querySelector("#display");
     console.log(display.value);
+  
     display.value = this.displayValue;
   }
 
@@ -70,7 +73,10 @@ class Calculator {
       this.operator = nextOperator;
     }
 
-    if (this.firstValue === null && !isNaN(inputValue)) {
+    if (nextOperator === "√") {
+      this.firstValue = "√";
+      this.waitingForSecondOperando = false;
+    } else if (this.firstValue === null && !isNaN(inputValue)) {
       this.firstValue = inputValue;
     } else if (this.operator) {
       const result = this.calculate(this.firstValue, inputValue, this.operator);
@@ -106,6 +112,7 @@ numeros.addEventListener("click", (event) => {
     case "*":
     case "/":
     case "=":
+    case "√":
       calculator.handleOperator(buttonValue);
       break;
     case ".":
