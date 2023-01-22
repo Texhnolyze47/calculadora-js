@@ -2,7 +2,7 @@ html {
   background-color: #e3f9ff;
 }
 
-.container-calculadora {
+.container-calculator {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,13 +10,13 @@ html {
   justify-content: center;
 }
 
-.calculadora {
+.calculator {
   background: #3a4452;
   padding: 20px;
   border-radius: 10px;
 }
 
-.calculadora .container-botones button {
+.calculator .container-buttons button {
   border: 0;
   outline: 0;
   width: 80px;
@@ -49,17 +49,17 @@ html {
   color: #fff;
 }
 
-.calculadora .container-botones .equal {
+.calculator .container-buttons .equal {
   width: 185px;
 }
 
-.container-botones button:hover {
+.container-buttons button:hover {
   color: #fff;
 }
 
-.container-botones button:active {
+.container-buttons button:active {
   box-shadow: 5px 5px 15px rgba(100, 100, 100, 0.2),
-    -8px -8px 15px rgba(0, 0, 0, 0.1);
+  -8px -8px 15px rgba(0, 0, 0, 0.1);
   outline: none !important;
   border: none !important;
 }
