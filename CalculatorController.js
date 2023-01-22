@@ -28,7 +28,7 @@ export default class CalculatorController{
           console.log("Operator is " + this.calculatorModel.operator);
           this.calculatorModel.tempExpression += `${this.calculatorView.firstDisplay}`;
         } else {
-          console.log("debe ser un igual" + this.calculatorModel.operator);
+          console.log("must be an equal" + this.calculatorModel.operator);
           this.calculatorModel.tempExpression += `${this.calculatorView.firstDisplay}`;
         }
         this.calculatorView.secondDisplay.innerHTML = this.calculatorModel.tempExpression;
@@ -36,9 +36,9 @@ export default class CalculatorController{
       }
     
       inputDecimal(dot) {
-        if (this.waitingForSecondOperando === true) {
+        if (this.waitingForSecondOperand === true) {
           this.displayValue = "0.";
-          this.waitingForSecondOperando = false;
+          this.waitingForSecondOperand = false;
           return;
         }
     
