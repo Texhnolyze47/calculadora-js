@@ -72,8 +72,6 @@ class Calculator {
   }
 
   updateDisplay() {
-    console.log("Acualizando")
-
     if(this.operator === "="){
       console.log("El operador es " + this.operator)
       this.tempExpresion +=  `${this.displayValue}`
@@ -83,11 +81,6 @@ class Calculator {
     }
     secondDisplay.innerHTML = this.tempExpresion;
     firstDisplay.value = this.displayValue
-
-    btnClear.addEventListener('click', () =>{
-    })
-
-
   }
 
   inputDecimal(dot) {
