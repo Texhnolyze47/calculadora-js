@@ -1,67 +1,65 @@
-html{
-    background-color: #e3f9ff;
+html {
+  background-color: #e3f9ff;
 }
 
-.container-calculadora{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container-calculadora {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.calculadora{
-    background: #3a4452;
-    padding: 20px;
-    border-radius: 10px;
+.calculadora {
+  background: #3a4452;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.calculadora .container-botones button{
-    border: 0;
-    outline: 0;
-    width: 80px;
-    height: 70px;
-    border-radius: 10px;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
-    background: transparent;
-    font-size: 1em;
-    color: #888585;
-    cursor: pointer;
-    margin: 10px;
-    
+.calculadora .container-botones button {
+  border: 0;
+  outline: 0;
+  width: 80px;
+  height: 70px;
+  border-radius: 10px;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  font-size: 1em;
+  color: #888585;
+  cursor: pointer;
+  margin: 10px;
 }
 
-#screen{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    margin: 20px 10px;
+#screen {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin: 20px 10px;
 }
 
-#screen input{
-    text-align: right;
-    flex: 1;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    font-size: 2em;
-    box-shadow: none;
-    color: #fff;
-
+#screen input {
+  text-align: right;
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 2em;
+  box-shadow: none;
+  color: #fff;
 }
 
-.calculadora .container-botones .equal{
-width: 185px;
+.calculadora .container-botones .equal {
+  width: 185px;
 }
 
-
-.container-botones button:hover{
-color: #fff
+.container-botones button:hover {
+  color: #fff;
 }
 
-.container-botones button:active{
-    box-shadow: 5px 5px 15px rgba(100, 100, 100, 0.2),
+.container-botones button:active {
+  box-shadow: 5px 5px 15px rgba(100, 100, 100, 0.2),
     -8px -8px 15px rgba(0, 0, 0, 0.1);
-    outline: none !important;
-    border: none !important;
-    }
+  outline: none !important;
+  border: none !important;
+}

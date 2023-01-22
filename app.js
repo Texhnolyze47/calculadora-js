@@ -1,6 +1,6 @@
 const firstDisplay = document.querySelector("#display");
 const secondDisplay = document.querySelector("#operation");
-const btnClear = document.querySelector(".borrar")
+const btnClear = document.querySelector(".borrar");
 
 class Calculator {
   constructor(displayValue, firstValue, waitingForSecondOperando, operator) {
@@ -8,7 +8,7 @@ class Calculator {
     this.firstValue = firstValue;
     this.waitingForSecondOperando = waitingForSecondOperando;
     this.operator = operator;
-    this.tempExpresion = ""
+    this.tempExpresion = "";
   }
 
   reset() {
@@ -17,14 +17,13 @@ class Calculator {
     this.waitingForSecondOperando = false;
     this.operator = null;
     this.tempExpresion = "0";
-    secondDisplay.value = ""
-
+    secondDisplay.value = "";
   }
 
-  backspace(){
-    this.displayValue = this.displayValue.slice(0,-1)
-    if(this.displayValue.length === 0){
-      this.displayValue = "0"
+  backspace() {
+    this.displayValue = this.displayValue.slice(0, -1);
+    if (this.displayValue.length === 0) {
+      this.displayValue = "0";
     }
   }
 
@@ -41,9 +40,9 @@ class Calculator {
       case "/":
         return firstOperand / secondOperand;
       case "√":
-        return Math.sqrt(secondOperand)
+        return Math.sqrt(secondOperand);
       case "^":
-        return Math.pow(firstOperand,secondOperand);
+        return Math.pow(firstOperand, secondOperand);
       case "%":
         return firstOperand % secondOperand;
       default:
@@ -55,7 +54,6 @@ class Calculator {
 
   inputDigit(digit) {
     console.log("Calculadora" + calculator.waitingForSecondOperando);
-
 
     if (this.waitingForSecondOperando === true) {
       console.log("Falta el operador");
@@ -72,15 +70,15 @@ class Calculator {
   }
 
   updateDisplay() {
-    if(this.operator === "="){
-      console.log("El operador es " + this.operator)
-      this.tempExpresion +=  `${this.displayValue}`
-    } else{
-      console.log("debe ser un igual" + this.operator)
+    if (this.operator === "=") {
+      console.log("El operador es " + this.operator);
+      this.tempExpresion += `${this.displayValue}`;
+    } else {
+      console.log("debe ser un igual" + this.operator);
       this.tempExpresion += this.displayValue;
     }
     secondDisplay.innerHTML = this.tempExpresion;
-    firstDisplay.value = this.displayValue
+    firstDisplay.value = this.displayValue;
   }
 
   inputDecimal(dot) {
@@ -97,27 +95,24 @@ class Calculator {
 
   handleOperator(nextOperator) {
     const inputValue = parseFloat(this.displayValue);
-    
+
     const result = this.calculate(this.firstValue, inputValue, this.operator);
 
-    
     if (this.operator && this.waitingForSecondOperando) {
       this.operator = nextOperator;
-
-    }    
-
-    if(nextOperator !== "=" ){
-      secondDisplay.value = firstDisplay.value + " " + nextOperator;
     }
-    else{
-      console.log("El resultado es: " + result)
+
+    if (nextOperator !== "=") {
+      secondDisplay.value = firstDisplay.value + " " + nextOperator;
+    } else {
+      console.log("El resultado es: " + result);
       firstDisplay.value = result;
-      secondDisplay.value +=  " " + this.displayValue + " =";
+      secondDisplay.value += " " + this.displayValue + " =";
     }
 
     if (nextOperator === "√") {
       console.log("Es una raiz");
-      const result = this.calculate(null,inputValue,nextOperator);
+      const result = this.calculate(null, inputValue, nextOperator);
       secondDisplay.value = "√" + "(" + result + ")";
       this.displayValue = `${parseFloat(result.toFixed(7))}`;
       this.firstValue = result;
@@ -165,7 +160,7 @@ numeros.addEventListener("click", (event) => {
       calculator.inputDecimal(buttonValue);
       break;
     case "AC":
-      console.log("Limpiando cal")
+      console.log("Limpiando cal");
       calculator.reset();
       break;
     case "DEL":
