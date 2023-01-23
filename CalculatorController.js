@@ -51,8 +51,8 @@ export default class CalculatorController{
         this.calculatorModel.operator = null;
         this.calculatorModel.tempExpression = "";
 
-        this.calculatorView.firstDisplay.value = "0"
-        this.calculatorView.secondDisplay.value = ""
+        this.calculatorView.displayValue.value = "0"
+        this.calculatorView.operationDisplay.value = ""
       }
 
       updateDisplay() {
@@ -70,8 +70,8 @@ export default class CalculatorController{
         }
         console.log("before ", this.calculatorView)
 
-        this.calculatorView.secondDisplay.innerHTML = this.calculatorModel.tempExpression;
-        this.calculatorView.firstDisplay.value = this.calculatorModel.firstDisplayValue;
+        this.calculatorView.operationDisplay.innerHTML = this.calculatorModel.tempExpression;
+        this.calculatorView.displayValue.value = this.calculatorModel.firstDisplayValue;
         console.log(this.calculatorModel);
         console.log("after ", this.calculatorView)
     }
@@ -89,18 +89,18 @@ export default class CalculatorController{
       this.calculatorModel.operator = nextOperator;
     }
     if (nextOperator !== "=") {
-      this.calculatorView.secondDisplay.value = this.calculatorView.firstDisplay.value + " " + nextOperator;
-      console.log(this.calculatorView.secondDisplay)
+      this.calculatorView.operationDisplay.value = this.calculatorView.displayValue.value + " " + nextOperator;
+      console.log(this.calculatorView.operationDisplay)
     } else {
       console.log("Result: " + result);
-      this.calculatorView.firstDisplay.value = result;
-      this.calculatorView.secondDisplay.value += " " + this.calculatorModel.firstDisplayValue + " =";
+      this.calculatorView.displayValue.value = result;
+      this.calculatorView.operationDisplay.value += " " + this.calculatorModel.firstDisplayValue + " =";
     }
 
     if (nextOperator === "√") {
       console.log("Root ");
       const result = this.calculatorModel.calculate(null,inputValue,nextOperator);
-      this.calculatorView.secondDisplay.value =  "√" + "(" + this.calculatorModel.firstDisplayValue + ")";
+      this.calculatorView.operationDisplay.value =  "√" + "(" + this.calculatorModel.firstDisplayValue + ")";
       this.calculatorModel.firstDisplayValue = `${parseFloat(result.toFixed(7))}`;
       this.calculatorModel.secondDisplayValue = result;
       this.calculatorModel.waitingForSecondOperator = false;
