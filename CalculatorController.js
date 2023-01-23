@@ -1,6 +1,8 @@
 import CalculatorModel  from "./CalculatorModel.js";
 import CalculatorView from "./CalculatorView.js";
 import CalculatorService from "./CalculatorService.js";
+import { WAITING_FOR_FIRST_OPERATOR, WAITING_FOR_SECOND_OPERATOR } from "./stateConstants.js";
+
 export default class CalculatorController{
 
     constructor(){
@@ -10,7 +12,7 @@ export default class CalculatorController{
     }
 
     inputDecimal(dot){
-      if (this.calculatorModel.waitingForSecondOperator === true) {
+      if (this.calculatorModel.waitingForSecondOperator === WAITING_FOR_SECOND_OPERATOR) {
         this.calculatorModel.firstDisplayValue = "0.";
         this.calculatorModel.waitingForSecondOperator = false;
         return;
@@ -24,7 +26,7 @@ export default class CalculatorController{
     inputDigit(digit) {
         console.log("method inputDigit(digit) " + this.calculatorModel.waitingForSecondOperator);
         console.log("Calculator " + this.calculatorModel.operator);
-        if (this.calculatorModel.waitingForSecondOperator === true) {
+        if (this.calculatorModel.waitingForSecondOperator === WAITING_FOR_SECOND_OPERATOR) {
             console.log("Operator is Missing");
             console.log(digit);
             this.calculatorModel.firstDisplayValue = digit;
@@ -52,7 +54,6 @@ export default class CalculatorController{
         this.calculatorModel.waitingForSecondOperator = false;
         this.calculatorModel.operator = null;
         this.calculatorModel.tempExpression = "";
-
         this.calculatorView.displayValue.value = "0"
         this.calculatorView.operationDisplay.value = ""
       }
@@ -114,7 +115,7 @@ export default class CalculatorController{
       this.calculatorModel.firstDisplayValue = `${parseFloat(result.toFixed(7))}`;
       this.calculatorModel.secondDisplayValue = result;
     }
-    this.calculatorModel.waitingForSecondOperator = true;
+    this.calculatorModel.waitingForSecondOperator = WAITING_FOR_SECOND_OPERATOR;
     this.calculatorModel.operator = nextOperator;
     console.log(this.calculatorModel);
   }
