@@ -102,9 +102,9 @@ export default class CalculatorController{
     if (nextOperator === "√") {
       console.log("Root ");
       const result = this.calculatorModel.calculate(null,inputValue,nextOperator);
-      this.calculatorView.secondDisplay =  "√" + "(" + result + ")";
+      this.calculatorView.secondDisplay.value =  "√" + "(" + this.calculatorModel.firstDisplayValue + ")";
       this.calculatorModel.firstDisplayValue = `${parseFloat(result.toFixed(7))}`;
-      this.calculatorView.firstDisplay = result;
+      this.calculatorModel.secondDisplayValue = result;
       this.calculatorModel.waitingForSecondOperator = false;
       this.calculatorModel.operator = null;
     } else if (this.calculatorModel.secondDisplayValue === null && !isNaN(inputValue)) {
