@@ -4,7 +4,7 @@ export default class CalculatorController{
 
     constructor(){
     this.calculatorModel = new CalculatorModel("0", null, false, null);
-    this.calculatorView = new CalculatorView(this.calculatorModel);
+    this.calculatorView = new CalculatorView();
     }
 
     inputDecimal(dot){
