@@ -11,10 +11,16 @@ keys.addEventListener("click", (event) =>{
   }
 
   switch (buttonValue) {
-    case "+":
-      //calculator.inputDigit(buttonValue);
+    case "+":  
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+    case "√":
+    case "^":
+    case "%":
+      calculator.handleOperator(buttonValue);
       break;
-  
     default:
       if(Number.isInteger(parseFloat(buttonValue))){
         calculator.inputDigit(buttonValue)
@@ -22,4 +28,4 @@ keys.addEventListener("click", (event) =>{
   }
   calculator.updateDisplay();
   
-})
+});

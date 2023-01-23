@@ -3,52 +3,94 @@ import CalculatorView from "./CalculatorView.js";
 export default class CalculatorController{
 
     constructor(){
-    this.calculatorModel = new CalculatorModel();
-    this.calculatorView = new CalculatorView();
+    this.calculatorModel = new CalculatorModel("0", null, false, null);
+    this.calculatorView = new CalculatorView(this.calculatorModel);
     }
 
     inputDigit(digit) {
-        console.log("calculator " + this.calculatorModel.waitingForSecondOperator);
-        if (this.calculatorModel.waitingForSecondOperand === undefined) {
+        console.log("method inputDigit(digit) " + this.calculatorModel.waitingForSecondOperator);
+        console.log("Calculator " + this.calculatorModel.waitingForSecondOperator);
+        if (this.calculatorModel.waitingForSecondOperand === true) {
             console.log("Operator is Missing");
             console.log(digit);
             this.calculatorModel.firstDisplayValue = digit;
             this.calculatorModel.waitingForSecondOperator = false;
           } else {
             let displayValue =
-            this.calculatorModel.firstDisplayValue === "0" ? digit : this.calculatorModel.firstDisplay + digit;
+            this.calculatorModel.firstDisplayValue === "0" ? digit : this.calculatorModel.firstDisplayValue + digit;
       
             this.calculatorModel.firstDisplayValue = displayValue;
           }
           console.log(this.calculatorModel);
+          console.log(this.calculatorView)
       }
 
       updateDisplay() {
+        console.log("method updateDisplay() ");
+
         if (this.calculatorModel.operator === "=") {
           console.log("Operator is " + this.calculatorModel.operator);
-          this.calculatorModel.tempExpression += `${this.calculatorView.firstDisplay}`;
+          this.calculatorModel.tempExpression += `${this.calculatorModel.firstDisplayValue}`;
+          console.log("first part ", this.calculatorModel.tempExpression  );
+
         } else {
-          console.log("must be an equal" + this.calculatorModel.operator);
-          this.calculatorModel.tempExpression += `${this.calculatorView.firstDisplay}`;
+          console.log("must be an equal " + this.calculatorModel.operator);
+          this.calculatorModel.tempExpression += this.calculatorModel.firstDisplayValue;
+          console.log("second part ", this.calculatorModel.tempExpression  );
         }
+        console.log("before ", this.calculatorView)
+
+        //this.calculatorView.secondDisplay.textContent += this.calculatorModel.tempExpression;
         this.calculatorView.secondDisplay.innerHTML = this.calculatorModel.tempExpression;
         this.calculatorView.firstDisplay.value = this.calculatorModel.firstDisplayValue;
-      }
+        console.log(this.calculatorModel);
+        console.log("after ", this.calculatorView)
+    }
+
     
-      inputDecimal(dot) {
-        if (this.waitingForSecondOperand === true) {
-          this.displayValue = "0.";
-          this.waitingForSecondOperand = false;
-          return;
-        }
-    
-        if (!this.displayValue.includes(dot)) {
-          this.displayValue += dot;
-        }
-      }
-    
-    
+  handleOperator(nextOperator) {
+    console.log(" handleOperator(nextOperator) ")
+    const inputValue = parseFloat(this.calculatorModel.firstDisplayValue);
+    console.log("Before calculate ", this.calculatorModel)
+
+    const result = this.calculatorModel.calculate(this.calculatorModel.secondDisplayValue, inputValue, this.calculatorModel.operator);
+
+    console.log("Result " + result);
+    if (this.calculatorModel.operator && this.calculatorModel.waitingForSecondOperator) {
+      this.calculatorModel.operator = nextOperator;
+    }
+    if (nextOperator !== "=") {
+      this.calculatorView.secondDisplay.value = this.calculatorView.firstDisplay.value + " " + nextOperator;
+      console.log(this.calculatorView.secondDisplay)
+    } else {
+      console.log("Result: " + result);
+      this.calculatorView.firstDisplay.value = result;
+      this.calculatorView.secondDisplay.value += " " + this.calculatorModel.firstDisplayValue + " =";
+    }
+
+    if (nextOperator === "√") {
+      console.log("Root ");
+      const result = this.calculatorModel.calculate(null,inputValue,nextOperator);
+      this.calculatorView.secondDisplay =  "√" + "(" + result + ")";
+      this.calculatorModel.firstDisplayValue = `${parseFloat(result.toFixed(7))}`;
+      this.calculatorView.firstDisplay = result;
+      this.calculatorModel.waitingForSecondOperator = false;
+      this.calculatorModel.operator = null;
+    } else if (this.calculatorModel.secondDisplayValue === null && !isNaN(inputValue)) {
+      this.calculatorModel.secondDisplayValue = inputValue;
+    } else if (this.calculatorModel.operator) {
+      console.log("The result is " + result);
+      this.calculatorModel.firstDisplayValue = `${parseFloat(result.toFixed(7))}`;
+      this.calculatorModel.secondDisplayValue = result;
+    }
+    this.calculatorModel.waitingForSecondOperator = true;
+    this.calculatorModel.operator = nextOperator;
+    console.log(this.calculatorModel);
+  }
 }
+    
+    
+
 
 
 
