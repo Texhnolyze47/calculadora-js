@@ -25,6 +25,17 @@ export default class CalculatorController{
           console.log(this.calculatorView)
       }
 
+      reset(){
+        this.calculatorModel.firstDisplayValue = "0";
+        this.calculatorModel.secondDisplayValue = null;
+        this.calculatorModel.waitingForSecondOperator = false;
+        this.calculatorModel.operator = null;
+        this.calculatorModel.tempExpression = "";
+
+        this.calculatorView.firstDisplay.value = "0"
+        this.calculatorView.secondDisplay.value = ""
+      }
+
       updateDisplay() {
         console.log("method updateDisplay() ");
 
