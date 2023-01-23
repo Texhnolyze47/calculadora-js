@@ -1,10 +1,12 @@
 import CalculatorModel  from "./CalculatorModel.js";
 import CalculatorView from "./CalculatorView.js";
+import CalculatorService from "./CalculatorService.js";
 export default class CalculatorController{
 
     constructor(){
     this.calculatorModel = new CalculatorModel("0", null, false, null);
     this.calculatorView = new CalculatorView();
+    this.calculatorService = new CalculatorService();
     }
 
     inputDecimal(dot){
@@ -82,7 +84,7 @@ export default class CalculatorController{
     const inputValue = parseFloat(this.calculatorModel.firstDisplayValue);
     console.log("Before calculate ", this.calculatorModel)
 
-    const result = this.calculatorModel.calculate(this.calculatorModel.secondDisplayValue, inputValue, this.calculatorModel.operator);
+    const result = this.calculatorService.calculate(this.calculatorModel.secondDisplayValue, inputValue, this.calculatorModel.operator);
 
     console.log("Result " + result);
     if (this.calculatorModel.operator && this.calculatorModel.waitingForSecondOperator) {
@@ -117,9 +119,3 @@ export default class CalculatorController{
     console.log(this.calculatorModel);
   }
 }
-    
-    
-
-
-
-
