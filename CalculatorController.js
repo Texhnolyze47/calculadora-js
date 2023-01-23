@@ -9,8 +9,8 @@ export default class CalculatorController{
 
     inputDigit(digit) {
         console.log("method inputDigit(digit) " + this.calculatorModel.waitingForSecondOperator);
-        console.log("Calculator " + this.calculatorModel.waitingForSecondOperator);
-        if (this.calculatorModel.waitingForSecondOperand === true) {
+        console.log("Calculator " + this.calculatorModel.operator);
+        if (this.calculatorModel.waitingForSecondOperator === true) {
             console.log("Operator is Missing");
             console.log(digit);
             this.calculatorModel.firstDisplayValue = digit;
