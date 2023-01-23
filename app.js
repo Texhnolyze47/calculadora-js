@@ -21,9 +21,13 @@ keys.addEventListener("click", (event) =>{
     case "%":
       calculator.handleOperator(buttonValue);
       break;
+    case ".":
+      calculator.inputDecimal(buttonValue)
+      break;
     case "AC":
       calculator.reset()
     break;
+
     default:
       if(Number.isInteger(parseFloat(buttonValue))){
         calculator.inputDigit(buttonValue)

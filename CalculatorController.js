@@ -7,6 +7,19 @@ export default class CalculatorController{
     this.calculatorView = new CalculatorView(this.calculatorModel);
     }
 
+    inputDecimal(dot){
+      if (this.calculatorModel.waitingForSecondOperator === true) {
+        this.calculatorModel.firstDisplayValue = "0.";
+        //this.displayValue = "0.";
+        this.calculatorModel.waitingForSecondOperator = false;
+        return;
+      }
+  
+      if (!this.calculatorModel.firstDisplayValue.includes(dot)) {
+        this.calculatorModel.firstDisplayValue += dot;
+      }
+    }
+
     inputDigit(digit) {
         console.log("method inputDigit(digit) " + this.calculatorModel.waitingForSecondOperator);
         console.log("Calculator " + this.calculatorModel.operator);
