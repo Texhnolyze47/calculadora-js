@@ -1,18 +1,19 @@
 export default class CalculatorModel {
-    constructor(firstDisplayValue, secondDisplayValue, tempExpression, waitingForSecondOperator,operator){
+    constructor(firstDisplayValue, secondDisplayValue, waitingForSecondOperator,operator){
         this.firstDisplayValue = firstDisplayValue;
         this.secondDisplayValue = secondDisplayValue;
-        this.tempExpression = tempExpression;
+        this.tempExpression = "";
         this.waitingForSecondOperator = waitingForSecondOperator;
         this.operator = operator;
     }
 
     calculate(firstOperand, secondOperand, operator) {
+        console.log("method calculate()")
         if(!operator){
             return secondOperand;
         }
     
-        console.log("En  calculate() " + operator)
+        console.log("Operator " + operator)
         switch (operator) {
         case "+":
             return firstOperand + secondOperand;
@@ -34,10 +35,8 @@ export default class CalculatorModel {
             console.log("This operations is not supported");
             break;
         }
+        console.log("El result is " + secondOperand)
         return secondOperand;
     }
 
-    add(first, second){
-        return first + second;
-    }
 }
