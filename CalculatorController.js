@@ -38,6 +38,13 @@ export default class CalculatorController{
           console.log(this.calculatorView)
       }
 
+      backspace(){
+        this.calculatorModel.firstDisplayValue = this.calculatorModel.firstDisplayValue.slice(0,-1);
+        if(this.calculatorModel.firstDisplayValue.length === 0){
+          this.calculatorModel.firstDisplayValue = "0";
+        }
+      }
+
       reset(){
         this.calculatorModel.firstDisplayValue = "0";
         this.calculatorModel.secondDisplayValue = null;

@@ -27,7 +27,9 @@ keys.addEventListener("click", (event) =>{
     case "AC":
       calculator.reset()
     break;
-
+    case "DEL":
+      calculator.backspace()
+      break;
     default:
       if(Number.isInteger(parseFloat(buttonValue))){
         calculator.inputDigit(buttonValue)
