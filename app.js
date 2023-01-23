@@ -22,19 +22,19 @@ keys.addEventListener("click", (event) =>{
       calculator.handleOperator(buttonValue);
       break;
     case ".":
-      calculator.inputDecimal(buttonValue)
+      calculator.handleDecimalButton(buttonValue)
       break;
     case "AC":
-      calculator.reset()
+      calculator.handleResetButton()
     break;
     case "DEL":
-      calculator.backspace()
+      calculator.handleBackspaceButton()
       break;
     default:
       if(Number.isInteger(parseFloat(buttonValue))){
-        calculator.inputDigit(buttonValue)
+        calculator.handleDigitButton(buttonValue)
       }
   }
-  calculator.updateDisplay();
+  calculator.handleUpdateDisplay();
   
 });
