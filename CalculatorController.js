@@ -10,7 +10,6 @@ export default class CalculatorController{
     inputDecimal(dot){
       if (this.calculatorModel.waitingForSecondOperator === true) {
         this.calculatorModel.firstDisplayValue = "0.";
-        //this.displayValue = "0.";
         this.calculatorModel.waitingForSecondOperator = false;
         return;
       }
@@ -71,7 +70,6 @@ export default class CalculatorController{
         }
         console.log("before ", this.calculatorView)
 
-        //this.calculatorView.secondDisplay.textContent += this.calculatorModel.tempExpression;
         this.calculatorView.secondDisplay.innerHTML = this.calculatorModel.tempExpression;
         this.calculatorView.firstDisplay.value = this.calculatorModel.firstDisplayValue;
         console.log(this.calculatorModel);
