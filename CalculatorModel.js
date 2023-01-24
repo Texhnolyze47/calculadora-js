@@ -8,28 +8,6 @@ export default class CalculatorModel {
         this.tempExpression = "";
     }
 
-    calculate(firstOperand, secondOperand, operator) { 
-    
-      switch (operator) {
-      case "+":
-          return firstOperand + secondOperand;
-      case "-":
-          return firstOperand - secondOperand;
-      case "*":
-          return firstOperand * secondOperand;
-      case "/":
-          return firstOperand / secondOperand;
-      case "√":
-          return Math.sqrt(secondOperand);
-      case "^":
-          return Math.pow(firstOperand, secondOperand);
-      case "%":
-          return firstOperand % secondOperand;
-      default:
-          return firstOperand;
-      }
-  }
-
     inputDigit(digit) {
         if (this.waitingForSecondOperator === true) {
             console.log("Operator is Missing");

@@ -2,14 +2,16 @@ import CalculatorController from "./CalculatorController.js";
 
 const keys = document.querySelector(".container-buttons");
 const calculator = new CalculatorController();
+
+//Add listener
 keys.addEventListener("click", (event) =>{
   const button = event.target;
   const buttonValue = button.innerText;
-
+  // verify if wahts is pressed is a button
   if (!button.matches("button")) {
     console.log("Not a button")
   }
-
+  // determine what action to take based on the value of the button.
   switch (buttonValue) {
     case "+":  
     case "-":
