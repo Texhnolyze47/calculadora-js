@@ -75,8 +75,8 @@ export default class CalculatorController {
     if (nextOperator === "=") {
       this.calculatorModel.firstDisplayValue = result
     } else if ( nextOperator === "√"){
-      this.calculatorModel.secondDisplayValue = `√(${this.calculatorModel.firstDisplayValue})`;
       this.calculatorModel.firstDisplayValue = this.calculatorService.calculate(null,inputValue,nextOperator);
+      this.calculatorView.operationDisplay.value = `√(${inputValue})`;
       this.calculatorModel.waitingForSecondOperator = false;
     }else if ( this.calculatorModel.secondDisplayValue === null && !isNaN(inputValue)){
       this.calculatorModel.secondDisplayValue = inputValue
