@@ -11,6 +11,7 @@ keys.addEventListener("click", (event) =>{
   // verify if whats is pressed is a button
   if (!button.matches("button")) {
     console.log("Not a button")
+    return;
   }
   // determine what action to take based on the value of the button.
   switch (buttonValue) {
