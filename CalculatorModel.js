@@ -1,4 +1,9 @@
 
+/**
+ * CalculatorModel class handles the logic of the calculator and 
+ * is responsible for storing the data and performing calculations.
+ * @class
+ */
 export default class CalculatorModel {
     constructor(){
         this.firstDisplayValue = "0";
@@ -7,7 +12,10 @@ export default class CalculatorModel {
         this.operator = null;
         this.tempExpression = "";
     }
-
+    /**
+     * Inputs a digit on the calculator
+     * @param {string} digit 
+     */
     inputDigit(digit) {
         if (this.waitingForSecondOperator === true) {
             console.log("Operator is Missing");
@@ -22,6 +30,11 @@ export default class CalculatorModel {
           }
       }
 
+      /**
+       * Method that handle the decimal point of the calculator
+       * @param {string} dot 
+       * @returns 
+       */
       inputDecimal(dot){
         if (this.waitingForSecondOperator === true) {
           this.firstDisplayValue = "0.";
@@ -34,13 +47,18 @@ export default class CalculatorModel {
         }
       }
 
+      /**
+       * Remove the last digit of the current value
+       */
       backspace(){
         this.firstDisplayValue = this.firstDisplayValue.slice(0,-1);
         if(this.firstDisplayValue.length === 0){
           this.firstDisplayValue = "0";
         }
       }
-
+      /**
+       * Reset the calculator to its initial state
+       */
       reset(){
         this.firstDisplayValue = "0";
         this.secondDisplayValue = null;

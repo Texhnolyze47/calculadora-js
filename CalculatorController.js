@@ -2,34 +2,65 @@ import CalculatorModel  from "./CalculatorModel.js";
 import CalculatorView from "./CalculatorView.js";
 import CalculatorService from "./CalculatorService.js";
 
-export default class CalculatorController{
 
-    constructor(){
-    this.calculatorModel = new CalculatorModel();
-    this.calculatorView = new CalculatorView();
-    this.calculatorService = new CalculatorService();
-    }
+/**
+ * CalculatorController class handles the actions of the calculator and 
+ * is responsible for managing the view and the model.
+ * @class
+ */
+export default class CalculatorController {
+  /**
+   * Creates an instances of CalculatorController
+   * @constructor
+   */
+  constructor() {
+      this.calculatorModel = new CalculatorModel();
+      this.calculatorView = new CalculatorView();
+      this.calculatorService = new CalculatorService();
+  }
 
-    handleDecimalButton(dot){
+  /**
+   * Handle the decimal button click event
+   * @param {string} dot - decimal value
+   */
+  handleDecimalButton(dot) {
       this.calculatorModel.inputDecimal(dot)
-    }
+  }
 
-    handleDigitButton(digit){
+  /**
+   * Handle the digit button click event
+   * @param {string} digit - digit value
+   */
+  handleDigitButton(digit) {
       this.calculatorModel.inputDigit(digit);
-    }
+  }
 
-    handleBackspaceButton(){
+  /**
+   * Handle the backspace button click event
+   */
+  handleBackspaceButton() {
       this.calculatorModel.backspace()
-    }
+  }
 
-    handleResetButton(){
+  /**
+   * Handle the reset button click event
+   */
+  handleResetButton() {
       this.calculatorModel.reset()
       this.calculatorView.reset()
-    }
-    
-    handleUpdateDisplay() {
-     this.calculatorView.updateDisplay(this.calculatorModel);
   }
+
+  /**
+   * Update the display
+   */
+  handleUpdateDisplay() {
+      this.calculatorView.updateDisplay(this.calculatorModel);
+  }
+
+  /**
+   * Handle the operator button click event
+   * @param {string} nextOperator - operator value
+   */
 
   handleOperator(nextOperator) {
     const inputValue = parseFloat(this.calculatorModel.firstDisplayValue);
