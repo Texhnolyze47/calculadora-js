@@ -1,4 +1,4 @@
-import CalculatorController from "./CalculatorController.js";
+import CalculatorController from "./controller/CalculatorController.js";
 
 const keys = document.querySelector(".container-buttons");
 const calculator = new CalculatorController();

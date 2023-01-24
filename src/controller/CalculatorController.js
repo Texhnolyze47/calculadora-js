@@ -1,7 +1,6 @@
-import CalculatorModel  from "./CalculatorModel.js";
-import CalculatorView from "./CalculatorView.js";
-import CalculatorService from "./CalculatorService.js";
-
+import CalculatorModel from "../models/CalculatorModel.js"
+import CalculatorView from "../views/CalculatorView.js"
+import CalculatorService from "../services/CalculatorService.js"
 
 /**
  * CalculatorController class handles the actions of the calculator and 
