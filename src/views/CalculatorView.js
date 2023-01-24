@@ -31,6 +31,9 @@ export default class CalculatorView{
      * @param {CalculatorModel} calculatorModel 
      */
     updateDisplay(calculatorModel) {
+        if(calculatorModel.operator === "="){
+            calculatorModel.tempExpression += `${this.displayValue}`;
+        }
         this.operationDisplay.innerHTML = calculatorModel.tempExpression;
         this.displayValue.value = calculatorModel.firstDisplayValue
     }
