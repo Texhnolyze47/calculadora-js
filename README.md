@@ -23,4 +23,4 @@ Para esta tarea debes hacer una calculadora con las siguientes operaciones:
 Todo debe ser con botones e inputs HTML. Nada en consola.
 
 
-![calculadora](docs/imgs/Screenshot%202023-01-21%20125757.png)
+![calculadora](docs/imgs/Screenshot%202023-01-23%20231715.png)
