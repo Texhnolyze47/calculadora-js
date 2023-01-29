@@ -61,32 +61,31 @@ export default class CalculatorController {
    * @param {string} nextOperator - operator value
    */
 
-  handleOperator(nextOperator) {
+handleOperator(nextOperator) {
     const inputValue = parseFloat(this.calculatorModel.firstDisplayValue);
-    const result = this.calculatorService.calculate(this.calculatorModel.secondDisplayValue,inputValue,this.calculatorModel.operator);
+    let result;
 
-     if (nextOperator !== "=") {
-      this.calculatorView.operationDisplay.value = `${this.calculatorView.displayValue.value}  ${nextOperator}`
-    } else {
-      this.calculatorView.displayValue.value = result;
-      this.calculatorView.operationDisplay.value += ` ${this.calculatorModel.firstDisplayValue} =`;
+    if (nextOperator !== "=" && nextOperator !== "√") {
+        result = this.calculatorService.calculate(this.calculatorModel.secondDisplayValue, inputValue, this.calculatorModel.operator);
+    } else if (nextOperator === "√") {
+        result = this.calculatorService.calculate(null, inputValue, nextOperator);
+    } else{
+      result = this.calculatorService.calculate(this.calculatorModel.secondDisplayValue, inputValue, this.calculatorModel.operator);
     }
 
-    if (nextOperator === "=") {
-      this.calculatorModel.firstDisplayValue = result
-    } else if ( nextOperator === "√"){
-      this.calculatorModel.firstDisplayValue = this.calculatorService.calculate(null,inputValue,nextOperator);
-      this.calculatorView.operationDisplay.value = `√(${inputValue})`;
-      this.calculatorModel.waitingForSecondOperator = false;
-    }else if ( this.calculatorModel.secondDisplayValue === null && !isNaN(inputValue)){
-      this.calculatorModel.secondDisplayValue = inputValue
-    } else {
-        this.calculatorModel.firstDisplayValue = `${parseFloat(result.toFixed(7))}`;
-        this.calculatorModel.secondDisplayValue = result;
-      }
 
-      this.calculatorModel.waitingForSecondOperator = true;
-      this.calculatorModel.operator = nextOperator;
+    if (nextOperator !== "=") {
+        this.calculatorView.operationDisplay.value = `${this.calculatorView.displayValue.value}  ${nextOperator}`
+    } else {
+        this.calculatorView.displayValue.value = result;
+        this.calculatorView.operationDisplay.value += ` ${this.calculatorModel.firstDisplayValue} =`;
     }
+
+    this.calculatorModel.firstDisplayValue = result;
+    this.calculatorModel.secondDisplayValue = (nextOperator !== "√") ? inputValue : null;
+    this.calculatorModel.waitingForSecondOperator = (nextOperator !== "√");
+    this.calculatorModel.operator = nextOperator;
+}
+
   }
 
