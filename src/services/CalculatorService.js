@@ -5,6 +5,34 @@
  */
 export default class CalculatorService{
 
+    add(a, b) {
+        return a + b;
+    }
+    
+    subtract(a, b) {
+        return a - b;
+    }
+    
+    multiply(a, b) {
+        return a * b;
+    }
+    
+    divide(a, b) {
+        return a / b;
+    }
+    
+    squareRoot(a) {
+        return Math.sqrt(a);
+    }
+
+    pow(a,b){
+        return Math.pow(a,b)
+    }
+
+    module(a,b){
+        return a % b
+    }
+
     /**
      * @param {number} firstOperand - The first operand to use in the calculation
      * @param {*} secondOperand - The second operand to use in the calculation
@@ -15,19 +43,19 @@ export default class CalculatorService{
     
         switch (operator) {
         case "+":
-            return firstOperand + secondOperand;
+            return this.add(firstOperand,secondOperand)
         case "-":
-            return firstOperand - secondOperand;
+            return this.subtract(firstOperand,secondOperand);
         case "*":
-            return firstOperand * secondOperand;
+            return this.multiply(firstOperand, secondOperand);
         case "/":
-            return firstOperand / secondOperand;
+            return this.divide(firstOperand, secondOperand);
         case "√":
-            return Math.sqrt(secondOperand);
+            return  this.squareRoot(secondOperand);
         case "^":
-            return Math.pow(firstOperand, secondOperand);
+            return this.pow(firstOperand,secondOperand);
         case "%":
-            return firstOperand % secondOperand;
+            return this.module(firstOperand,secondOperand);
         default:
             return firstOperand;
         }
