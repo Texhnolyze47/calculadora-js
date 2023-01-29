@@ -73,13 +73,13 @@ handleOperator(nextOperator) {
       result = this.calculatorService.calculate(this.calculatorModel.secondDisplayValue, inputValue, this.calculatorModel.operator);
     }
 
-
     if (nextOperator !== "=") {
-        this.calculatorView.operationDisplay.value = `${this.calculatorView.displayValue.value}  ${nextOperator}`
+      this.calculatorView.operationDisplay.value = (nextOperator === "√") ? `√(${inputValue})` : `${this.calculatorView.displayValue.value}  ${nextOperator}`;
     } else {
-        this.calculatorView.displayValue.value = result;
-        this.calculatorView.operationDisplay.value += ` ${this.calculatorModel.firstDisplayValue} =`;
+      this.calculatorView.displayValue.value = result;
+      this.calculatorView.operationDisplay.value += ` ${(this.calculatorModel.operator === "√") ? this.calculatorModel.secondDisplayValue : this.calculatorModel.firstDisplayValue} =`;
     }
+    
 
     this.calculatorModel.firstDisplayValue = result;
     this.calculatorModel.secondDisplayValue = (nextOperator !== "√") ? inputValue : null;
